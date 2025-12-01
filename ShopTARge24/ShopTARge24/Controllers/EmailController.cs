@@ -15,7 +15,7 @@ namespace ShopTARge24.Controllers
 
         public IActionResult Index()
         {        
-            return View();
+            return View("~/Views/AddEmail/Index.cshtml");
         }
 
         [HttpPost]
