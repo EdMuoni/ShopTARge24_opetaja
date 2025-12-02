@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ShopTARge24.Core.ServiceInterface;
 using ShopTARge24.Models.Email;
-using ShopTARge24.Views.AddEmail;
 
 namespace ShopTARge24.Controllers
 {
