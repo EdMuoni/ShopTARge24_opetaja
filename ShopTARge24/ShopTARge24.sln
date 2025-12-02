@@ -13,8 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopTARge24.Data", "ShopTAR
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopTARge24.RealEstateTest", "ShopTARge24.RealEstateTest\ShopTARge24.RealEstateTest.csproj", "{7BDDF792-7CE3-4433-97B7-EEDD48BED621}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRSample", "SignalRSample\SignalRSample.csproj", "{24F5A5D3-5E49-434B-BE70-09F356CDD35E}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,10 +39,6 @@ Global
 		{7BDDF792-7CE3-4433-97B7-EEDD48BED621}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BDDF792-7CE3-4433-97B7-EEDD48BED621}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BDDF792-7CE3-4433-97B7-EEDD48BED621}.Release|Any CPU.Build.0 = Release|Any CPU
-		{24F5A5D3-5E49-434B-BE70-09F356CDD35E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{24F5A5D3-5E49-434B-BE70-09F356CDD35E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{24F5A5D3-5E49-434B-BE70-09F356CDD35E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{24F5A5D3-5E49-434B-BE70-09F356CDD35E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
