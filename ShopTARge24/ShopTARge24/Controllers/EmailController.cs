@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ShopTARge24.Core.ServiceInterface;
 using ShopTARge24.Models.Email;
+using ShopTARge24.Views.AddEmail;
 
 namespace ShopTARge24.Controllers
 {
@@ -15,6 +16,7 @@ namespace ShopTARge24.Controllers
 
         public IActionResult Index()
         {        
+            //return View();
             return View("~/Views/AddEmail/Index.cshtml");
         }
 

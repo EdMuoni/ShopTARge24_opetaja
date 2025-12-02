@@ -2,6 +2,7 @@
 
 <div>
     <form method="post" enctype="multipart/form-data">
+
         <div class="form-group row">
             <label asp-for="To" class="col-sm-2 col-form-label"></label>
             <div class="col-sm-5">
@@ -19,15 +20,17 @@
         <div class="form-group row">
             <label asp-for="Body" class="col-sm-2 col-form-label"></label>
             <div class="col-sm-5">
-                <input asp-for="Body" class="form-control" />
+                <textarea asp-for="Body" class="form-control"></textarea>
             </div>
         </div>
 
         <div class="form-group row">
-            <label asp-for="Attachment"></label>
-            <input asp-for="Attachment" class="form-control" multiple="multiple" type="file"/>
+            <label asp-for="Attachment" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-5">
+                <input asp-for="Attachment" class="form-control" multiple="multiple" type="file"/>
+            </div>
         </div>
 
-        <input asp-action="sendEmail" asp-controller="emails" type="submit" class="btn btn-primary" value="Send Email" />
+        <input asp-action="sendEmail" asp-controller="email" type="submit" class="btn btn-primary" value="Send Email" />
     </form>
 </div>
