@@ -11,6 +11,7 @@ namespace ShopTARge24.ApplicationServices.Services
     {
         private readonly IConfiguration _config;
 
+        // Constructor to inject the configuration settings
         public EmailServices
             (
                 IConfiguration config
@@ -19,7 +20,7 @@ namespace ShopTARge24.ApplicationServices.Services
             _config = config;
         }
 
-
+        // Method to send an email with optional attachments
         public void SendEmail(EmailDto dto)
         {
             var email = new MimeMessage();
@@ -48,30 +49,38 @@ namespace ShopTARge24.ApplicationServices.Services
                 }
             }
             email.Body = builder.ToMessageBody();
-
             using var smtp = new SmtpClient();
 
             smtp.Connect(_config.GetSection("EmailHost").Value, 587, MailKit.Security.SecureSocketOptions.StartTls);
             smtp.Authenticate(_config.GetSection("EmailUserName").Value, _config.GetSection("EmailPassword").Value);
             smtp.Send(email);
             smtp.Disconnect(true);
+
         }
 
-        public void SendEmailToken(EmailTokenDto dto, string token)
+        // Implement the missing interface method
+        public void SendEmailToken(EmailTokenDto newsignup, string token)
+        {
+            SendEmailToToken(newsignup, token);
+        }
+
+        public void SendEmailToToken(EmailTokenDto dto, string token)
         {
             dto.Token = token;
             var email = new MimeMessage();
 
-            _config.GetSection("EmailUserName").Value = "";
+            // Hardcoded configuration values for demonstration purposes 
+            _config.GetSection("EmailUserName").Value = "edgar.muoni@gmail.com";
             _config.GetSection("EmailHost").Value = "smtp.gmail.com";
-            _config.GetSection("EmailPassword").Value = "";
+            _config.GetSection("EmailPassword").Value = "kjoo hcsv tpsm njac";
 
             email.From.Add(MailboxAddress.Parse(_config.GetSection("EmailUserName").Value));
-            email.To.Add(MailboxAddress.Parse(dto.To));
+            // Set the sender's email address
+            email.To.Add(MailboxAddress.Parse(dto.To)); // Set the recipient's email address
             email.Subject = dto.Subject;
             var builder = new BodyBuilder
             {
-                HtmlBody = dto.Body,
+                HtmlBody = dto.Body
             };
 
             email.Body = builder.ToMessageBody();
