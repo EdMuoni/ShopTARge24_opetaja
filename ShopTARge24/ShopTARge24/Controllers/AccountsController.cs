@@ -247,9 +247,57 @@ namespace ShopTARge24.Controllers
                 if (user != null && await _userManager.IsEmailConfirmedAsync(user))
                 {
                     var token = await _userManager.GeneratePasswordResetTokenAsync(user);
-                    
+                    var passwordResetLink = Url.Action("ResetPassword", "Account", new { email = model.Email, token = token }, Request.Scheme);
+
+                    var emailDto = new EmailDto()
+                    {
+                        To = model.Email,
+                        Subject = "Password Reset",
+                        Body = $"Please reset your password by <a href=\"{passwordResetLink}\">clicking here</a>."
+                    };
+
+                    _emailServices.SendEmail(emailDto);
+
+                    return View("ForgotPasswordConfirmation");
                 }
+                return View("ForgotPasswordConfirmation");
             }
+            return View(model);
         }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult ResetPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> ResetPassword(ResetPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByEmailAsync(model.Email);
+                if (user != null)
+                {
+
+                    var result = await _userManager.ResetPasswordAsync(user, model.Token, model.NewPassword);
+                    if (result.Succeeded)
+                    {
+                        return View("ResetPasswordConfirmation");
+                    }
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                    return View(model);
+                }
+                return View("ResetPasswordConfirmation");
+            }
+
+            return View(model);
+        }
+
     }
 }
