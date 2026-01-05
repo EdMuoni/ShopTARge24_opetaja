@@ -9,7 +9,7 @@ namespace ShopTARge24.Models.Accounts
 
         [Required]
         [DataType(DataType.Password)]
-        public string NewPassword { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
 
         [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]

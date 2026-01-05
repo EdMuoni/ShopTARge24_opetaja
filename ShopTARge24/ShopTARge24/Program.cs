@@ -21,7 +21,11 @@ builder.Services.AddScoped<IEmailServices, EmailServices>();
 
 builder.Services.AddHttpClient<IChuckNorrisServices, ChuckNorrisServices>();
 builder.Services.AddHttpClient<ICocktailServices, CocktailServices>();
-
+builder.Services.AddAuthentication().AddGoogle(googleOptions =>
+{
+    googleOptions.ClientId = builder.Configuration["Authentication:Google:ClientId"];
+    googleOptions.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
+});
 
 builder.Services.AddDbContext<ShopTARge24Context>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
