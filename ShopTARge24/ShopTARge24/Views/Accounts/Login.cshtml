@@ -8,11 +8,10 @@
     <div class="col-md-6">
         <h1>Local Account Login</h1>
         <hr />
-
         <form method="post">
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Email"></label>
+                <label asp-for="Email">@Html.DisplayNameFor(m => m.Email)</label>
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
@@ -44,10 +43,13 @@
     <div class="col-md-6">
         <h1>External Login</h1>
         <hr />
-        <form asp-action="ExternalLogin" asp-controller="Accounts">
-            <button type="submit" name="provider" value="Google" class="btn btn-primary">
-                <i class="fab fa-google"></i> Login with Google
-            </button>
+
+        <form asp-controller="Accounts" asp-action="ExternalLogin" asp-route-returnUrl="@Context.Request.Query["ReturnUrl"]" method="post">
+            <div>
+                <button type="submit" class="btn btn-primary" name="provider" value="Google">
+                    Google
+                </button>
+            </div>
         </form>
     </div>
 </div>
